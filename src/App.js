@@ -1,17 +1,17 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "scenes/homePage";
 import ProfilePage from "scenes/profilePage";
 import LoginPage from "scenes/loginPage";
 import {useMemo} from "react"
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
-import { CssBaseline, createTheme } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
-import { themeSetting } from "./theme";
-
+import { useSelector } from "react-redux";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+// import { ThemeProvider } from "@emotion/react";
+import { themeSettings } from "./theme";
+import { createTheme }from "@mui/material/styles";
 
 function App() {
   const mode=useSelector((state)=>state.mode)
-  const theme=useMemo(()=>createTheme(themeSetting(mode)),[mode])
+  const theme=useMemo(()=>createTheme(themeSettings(mode)),[mode])
   return (
     <div className="App">
      <BrowserRouter>
